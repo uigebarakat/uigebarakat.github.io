@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Uige Barakat — домашний текстиль</title>
+<meta name="description" content="Постельное бельё, покрывала, подушки и домашняя одежда. Астана, доставка по Казахстану.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Marck+Script&family=IBM+Plex+Mono:wght@400;500&family=Cormorant+Garamond:wght@600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --blush:#F7E9E7; --rose:#EDC4C4; --rose-deep:#B98587; --sage:#B4CDCB; --sage-deep:#5B7F7C;
+  --cocoa:#3F3838; --muted:#7D7272; --white:#FFFCFB; --line:#EAD9D7;
+  --mono:"IBM Plex Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
+  --script:"Marck Script","Segoe Script","Apple Chancery",cursive;
+  --serif:"Cormorant Garamond",Georgia,serif;
+  color-scheme: light;
+}
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-padding-top:env(safe-area-inset-top,0px);-webkit-text-size-adjust:100%;text-size-adjust:100%}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--white);color:var(--cocoa);font:14px/1.6 var(--mono);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{max-width:100%;display:block}
+button{font:inherit;color:inherit;cursor:pointer}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--rose-deep);outline-offset:3px}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--sage-deep);z-index:20}
+
+/* бегущая строка */
+.ticker{background:var(--sage-deep);color:var(--white);overflow:hidden;white-space:nowrap;font-size:.9rem;letter-spacing:.06em;padding:9px 0}
+.ticker{text-align:center;min-height:38px}
+.ticker .track{display:block;padding:0 14px;white-space:normal;transition:opacity .4s}
+@keyframes run{to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion:reduce){.ticker .track{animation:none}}
+
+/* шапка */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;background:color-mix(in srgb,var(--white) 94%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.bar{max-width:1100px;margin:0 auto;padding:14px 18px;display:flex;align-items:center;gap:14px}
+.logo{font-family:var(--serif);font-weight:600;font-size:1.25rem;letter-spacing:.32em;text-decoration:none;white-space:nowrap}
+.icons{margin-left:auto;display:flex;gap:6px}
+.icons a{width:40px;height:40px;display:grid;place-items:center;border-radius:50%;text-decoration:none}
+.icons svg{width:22px;height:22px}
+.chips{max-width:1100px;margin:0 auto;display:flex;gap:6px;overflow-x:auto;padding:0 18px 12px;scrollbar-width:none}
+.chips::-webkit-scrollbar{display:none}
+.chip{border:1px solid var(--line);background:transparent;border-radius:999px;padding:7px 15px;white-space:nowrap;font-size:.8rem;letter-spacing:.04em}
+.chip[aria-pressed="true"]{background:var(--rose);border-color:var(--rose)}
+
+/* приветствие */
+.hello{text-align:center;padding:30px 18px 6px}
+.hello h1{font-family:var(--script);font-weight:400;font-size:clamp(2.4rem,9vw,3.6rem);line-height:1.05;color:var(--rose-deep);margin:0}
+.hello p{margin:10px auto 0;max-width:34ch;color:var(--muted)}
+
+/* сетка */
+.grid{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px 10px;padding:22px 10px 30px}
+@media (min-width:720px){.grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:34px 18px;padding:28px 18px}}
+@media (min-width:1000px){.grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.item{border:0;background:none;padding:0;text-align:left;display:flex;flex-direction:column;gap:8px;min-width:0}
+.ph{position:relative;aspect-ratio:3/4;overflow:hidden;background:var(--blush)}
+.ph img{width:100%;height:100%;object-fit:cover}
+.mono-l{position:absolute;inset:0;display:grid;place-items:center;font-family:var(--script);font-size:3rem;color:var(--rose-deep)}
+.tag{position:absolute;left:8px;top:8px;background:var(--sage);color:var(--white);font-size:.66rem;letter-spacing:.08em;padding:3px 9px;border-radius:999px;text-transform:uppercase}
+.item .nm{font-size:.82rem;letter-spacing:.04em;text-transform:uppercase;line-height:1.35;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
+.item .pr{font-size:.92rem;font-weight:500}
+.empty{grid-column:1/-1;padding:50px 0;text-align:center;font-family:var(--script);font-size:1.8rem;color:var(--rose-deep)}
+
+.how{max-width:1100px;margin:0 auto;padding:28px 18px;display:grid;gap:20px;border-top:1px solid var(--line)}
+@media (min-width:720px){.how{grid-template-columns:repeat(3,1fr)}}
+.how h3{font-family:var(--script);font-weight:400;font-size:1.7rem;color:var(--rose-deep);margin:0}
+.how p{margin:2px 0 0;color:var(--muted);font-size:.84rem;max-width:36ch}
+footer{text-align:center;padding:24px 18px 40px;font-size:.8rem;color:var(--muted);background:var(--blush)}
+footer a{text-decoration:none;border-bottom:1px solid var(--rose-deep);margin:0 8px}
+
+/* карточка товара */
+dialog{border:0;padding:0;width:100%;max-width:min(560px,100vw);max-height:96vh;margin:auto auto 0;background:var(--white);color:var(--cocoa);overflow-x:hidden;overflow-y:auto;border-radius:16px 16px 0 0}
+@media (min-width:760px){dialog{margin:auto;border-radius:6px}}
+dialog::backdrop{background:rgba(63,56,56,.45)}
+.gal{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;background:var(--blush)}
+.gal::-webkit-scrollbar{display:none}
+.gal img,.gal .mono-l{flex:0 0 100%;aspect-ratio:3/4;object-fit:cover;scroll-snap-align:start;position:relative}
+.dots{position:absolute;left:16px;bottom:14px;display:flex;gap:8px}
+.dots i{width:7px;height:7px;border-radius:50%;background:rgba(255,252,251,.6)}
+.dots i.on{background:var(--cocoa)}
+.det{padding:18px 20px calc(24px + env(safe-area-inset-bottom,0px));display:grid;gap:14px}
+.det h2{font-family:var(--mono);font-weight:500;font-size:1.25rem;letter-spacing:.04em;text-transform:uppercase;line-height:1.35;margin:0}
+.det .pr{font-size:1.2rem;font-weight:500}
+.specs{margin:0;display:grid;grid-template-columns:auto 1fr;gap:6px 14px;font-size:.84rem}
+.specs dt{color:var(--muted)}
+.specs dd{margin:0}
+.qty{display:flex;align-items:center;gap:12px}
+.qty button{width:40px;height:40px;border-radius:50%;border:1px solid var(--line);background:var(--white);font-size:1.1rem}
+.qty span{min-width:2ch;text-align:center;font-weight:500}
+.order{display:block;text-align:center;text-decoration:none;background:var(--sage-deep);color:var(--white);border-radius:999px;padding:15px 20px;letter-spacing:.08em;text-transform:uppercase;font-size:.88rem}
+.promo-btn{border:1px dashed var(--rose-deep);background:var(--blush);color:var(--rose-deep);border-radius:999px;padding:11px;font-size:.8rem;letter-spacing:.04em}
+.ship{font-size:.78rem;color:var(--muted);text-align:center;margin:0}
+.x{position:absolute;top:12px;right:12px;width:40px;height:40px;border-radius:50%;border:0;background:rgba(255,252,251,.9);font-size:1.4rem;line-height:1;z-index:2}
+
+/* приветственный конверт */
+#hi{background:transparent;max-width:min(420px,94vw);margin:auto;border-radius:0;overflow:visible}
+.env{position:relative;padding:44px 0 0}
+.letter{position:relative;z-index:1;margin:0 26px;background:#FBF1F0;padding:30px 22px 70px;text-align:center;box-shadow:0 6px 20px rgba(120,80,80,.15)}
+.letter h2{font-family:var(--script);font-weight:400;font-size:2.5rem;line-height:1.05;color:var(--rose-deep);margin:0}
+.letter p{margin:14px 0 0;font-size:.86rem;line-height:1.6}
+.pocket{position:relative;z-index:2;margin-top:-62px;background:var(--rose);padding:40px 26px 26px;clip-path:polygon(0 0,50% 42%,100% 0,100% 100%,0 100%);text-align:center}
+.pocket .go{display:block;width:100%;border:0;background:var(--sage-deep);color:var(--white);border-radius:999px;padding:13px;letter-spacing:.08em;text-transform:uppercase;font-size:.84rem;margin-top:40px}
+.pocket small{display:block;margin-top:10px;font-size:.68rem;color:var(--cocoa);opacity:.75}
+.flap{position:absolute;left:0;right:0;top:0;height:120px;background:var(--rose);clip-path:polygon(0 100%,50% 0,100% 100%);opacity:.85}
+.hx{position:absolute;right:0;top:0;z-index:3;width:40px;height:40px;border-radius:50%;border:0;background:rgba(63,56,56,.55);color:var(--white);font-size:1.5rem;line-height:1}
+#hi :focus:not(:focus-visible){outline:none}
+@media (prefers-reduced-motion:no-preference){#hi[open] .letter{animation:rise .6s ease-out both}@keyframes rise{from{transform:translateY(40px);opacity:0}}}
+</style>
+</head>
+<body>
+<div class="ticker" aria-label="Условия"><div class="track" id="track"></div></div>
+
+<header class="top">
+  <div class="bar">
+    <a class="logo" href="#">UIGE BARAKAT</a>
+    <nav class="icons" aria-label="Связаться">
+      <a href="https://instagram.com/uige.barakat" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".8" fill="currentColor"/></svg></a>
+      <a href="https://wa.me/77784195546" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20 12a8 8 0 0 1-11.8 7L4 20l1.1-4A8 8 0 1 1 20 12Z"/><path d="M9 8.5c0 3.5 2.5 6.5 6.5 6.5l1-1.5-2-1-1 1c-1.2-.5-2.5-1.8-3-3l1-1-1-2L9 8.5Z"/></svg></a>
+    </nav>
+  </div>
+  <div class="chips" id="chips" role="tablist" aria-label="Категории"></div>
+</header>
+
+<section class="hello">
+  <h1>Уют начинается с постели</h1>
+  <p>Постельное бельё, покрывала и домашняя одежда. Выбирайте, а заказ оформим в WhatsApp.</p>
+</section>
+
+<main class="grid" id="grid"></main>
+
+<section class="how" aria-label="Как заказать">
+  <div><h3>Выберите</h3><p>Нажмите на товар, чтобы посмотреть все фото, размеры и цену.</p></div>
+  <div><h3>Напишите нам</h3><p>Кнопка «Заказать» откроет WhatsApp с готовым сообщением, останется только отправить.</p></div>
+  <div><h3>Получите</h3><p>По Астане отправим Яндекс Доставкой, оплата доставки на вашей стороне, от 30 000 ₸ бесплатно. В другие города отправим Казпочтой.</p></div>
+</section>
+<footer>
+  <a href="https://instagram.com/uige.barakat" target="_blank" rel="noopener">Instagram</a>
+  <a href="https://wa.me/77784195546" target="_blank" rel="noopener">WhatsApp</a>
+</footer>
+
+<dialog id="dlg" aria-label="Товар">
+  <div style="position:relative">
+    <div class="gal" id="gal"></div>
+    <div class="dots" id="dots"></div>
+    <button class="x" id="close" aria-label="Закрыть">×</button>
+  </div>
+  <div class="det">
+    <h2 id="dName"></h2>
+    <div class="pr" id="dPrice"></div>
+    <dl class="specs" id="dSpecs"></dl>
+    <div class="qty"><button type="button" id="qMinus" aria-label="Меньше">−</button><span id="qVal">1</span><button type="button" id="qPlus" aria-label="Больше">+</button></div>
+    <button type="button" class="promo-btn" id="dPromo">Получить −10% на первый заказ</button>
+    <a class="order" id="dOrder" target="_blank" rel="noopener">Заказать в WhatsApp</a>
+    <p class="ship" id="dShip"></p>
+  </div>
+</dialog>
+
+<dialog id="hi" aria-label="Приветствие">
+  <div class="env">
+    <div class="flap"></div>
+    <button class="hx" id="hiX" aria-label="Закрыть">×</button>
+    <div class="letter">
+      <h2>Скидка 10% на первый заказ</h2>
+      <p>Нажмите кнопку, и скидка сама добавится к вашему заказу в WhatsApp. А от 30 000 ₸ ещё и доставка по Астане бесплатно.</p>
+    </div>
+    <div class="pocket">
+      <button class="go" id="hiGo" autofocus>Получить скидку</button>
+      <small>Скидка действует на первый заказ, промокод UIGE10</small>
+    </div>
+  </div>
+</dialog>
+
+<script id="data" type="application/json">[{"id": "05anifzb0apt7gab4sb0", "name": "Покрывало sikel home fashion", "cat": "Покрывало", "sec": "textile", "size": "", "mat": "", "price": 27000, "unit": "pcs", "photos": ["cc230553eec8ca7e25aedc3b9b241915", "20a95d5ae8ed0768523293824901b6e5", "9cb241415988d836e202f960bbf4f107"]}, {"id": "6jn05covobxdinew01h0", "name": "Korea", "cat": "Комплект постельного белья", "sec": "textile", "size": "2-спальный · Пододеяльник 200×230 см · Простыня 230×250 см · Наволочки 55×80 см", "mat": "Вареный хлопок", "price": 12000, "unit": "pcs", "photos": ["e2094aaab851f4630778a830ae5349b9"]}, {"id": "amxnvbey7fzn7550zs03", "name": "Good fashion", "cat": "Комплект постельного белья", "sec": "textile", "size": "2-спальный", "mat": "", "price": 10000, "unit": "pcs", "photos": ["ce0cab4da4931148915176b907cf2b12", "fb57139272946574359cc18c97686dd3"]}, {"id": "pm12u72rgbpvbyyrfpdp", "name": "Комплект Clasy", "cat": "Комплект постельного белья", "sec": "textile", "size": "2-спальный", "mat": "", "price": 7000, "unit": "pcs", "photos": ["c8689a6c60c48abeacbf464cd86fd806"]}, {"id": "q2py9r1i1r74cqasrm43", "name": "Dimash", "cat": "Комплект постельного белья", "sec": "textile", "size": "2-спальный", "mat": "", "price": 10000, "unit": "pcs", "photos": ["79edc2509ea3a6a1e88b56fb8ddcca78", "17d407f8e5a1bd2aed9511ab73fa07a0"]}, {"id": "sd0r9360kernqyoxvazl", "name": "Носки кашемир", "cat": "Носки", "sec": "wear", "size": "", "mat": "", "price": 600, "unit": "pcs", "photos": []}]</script>
+<script id="photomap" type="application/json">{"cc230553eec8ca7e25aedc3b9b241915": "4c60ca498b33bfb13d20ac6ed6ed4107", "20a95d5ae8ed0768523293824901b6e5": "d78dca1afc4cbde8534c63263f9b2709", "9cb241415988d836e202f960bbf4f107": "e45cea54a149c0d41ea5396a4b28d736", "e2094aaab851f4630778a830ae5349b9": "4adfb6f96b6f4ca0ea360d6ec9174da2", "ce0cab4da4931148915176b907cf2b12": "b287a071c9370c707fdf477bba5736c7", "fb57139272946574359cc18c97686dd3": "ae133e0631b1b78422071ffe2e3b5d3a", "c8689a6c60c48abeacbf464cd86fd806": "f36c8cebfd6b942fe2c98b67b49f93b8", "79edc2509ea3a6a1e88b56fb8ddcca78": "34d60e754b8b339ce0d22dc9a8f00c1e", "17d407f8e5a1bd2aed9511ab73fa07a0": "e81725d57e9804a64ce935c11d1078b8"}</script>
+<script>
+(() => {
+const items = JSON.parse(document.getElementById("data").textContent);
+const MAP = JSON.parse(document.getElementById("photomap").textContent);
+const WA = "77784195546", FREE = 30000, CODE = "UIGE10";
+let promo = false; try { promo = localStorage.getItem("ub-promo") === "1"; } catch(_) {}
+const $ = s => document.querySelector(s);
+const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const fmt = n => new Intl.NumberFormat("ru-RU").format(n) + " ₸";
+const src = id => MAP[id] ? "photos/" + MAP[id] + ".jpg" : null;
+const photosOf = it => it.photos.map(src).filter(Boolean);
+const monoL = it => `<div class="mono-l">${esc((it.name || "U").trim().charAt(0).toUpperCase())}</div>`;
+const groupName = it => it.sec === "wear" ? "Домашняя одежда" : ({"Комплект постельного белья":"Постельное бельё"}[it.cat] || (it.cat ? it.cat.replace(/о$/, "а").replace(/ка$/, "ки") : "Другое"));
+const parts = s => (s || "").split("·").map(x => x.trim()).filter(Boolean);
+const ORDER = ["Постельное бельё","Покрывала","Подушки","Дивандек","Полотенца","Домашняя одежда"];
+const rank = g => { const i = ORDER.indexOf(g); return i < 0 ? 99 : i; };
+
+const line = ["−10% на первый заказ", "Бесплатная доставка по Астане от 30 000 ₸", "Оплата Kaspi", "Отправка по всему Казахстану", "Заказ в WhatsApp за минуту"];
+let ti = 0; const tick = () => { const el = $("#track"); el.style.opacity = 0; setTimeout(() => { el.textContent = line[ti++ % line.length]; el.style.opacity = 1; }, 400); };
+$("#track").textContent = line[ti++];
+setInterval(tick, 3500);
+
+const groups = ["Всё", ...[...new Set(items.map(groupName))].sort((a,b) => rank(a) - rank(b))];
+let cur = "Всё";
+function drawChips(){ $("#chips").innerHTML = groups.map(g => `<button class="chip" data-g="${esc(g)}" aria-pressed="${g===cur}">${esc(g)}</button>`).join(""); }
+function drawGrid(){
+  const list = items.filter(it => cur === "Всё" || groupName(it) === cur).sort((a,b) => rank(groupName(a)) - rank(groupName(b)) || a.price - b.price);
+  $("#grid").innerHTML = list.length ? list.map(it => {
+    const p = photosOf(it)[0], n = photosOf(it).length;
+    return `<button class="item" data-id="${it.id}"><div class="ph">${p ? `<img src="${esc(p)}" alt="${esc(it.name)}" loading="lazy">` : monoL(it)}${n > 1 ? `<span class="tag">${n} фото</span>` : ""}</div>
+      <div class="nm">${esc(it.name)}</div><div class="pr">${fmt(it.price)}</div></button>`;
+  }).join("") : `<div class="empty">Скоро здесь появятся товары</div>`;
+}
+$("#chips").addEventListener("click", e => { const b = e.target.closest("[data-g]"); if (!b) return; cur = b.dataset.g; drawChips(); drawGrid(); window.scrollTo({top: $(".hello").offsetTop - 60}); });
+
+let open = null, qty = 1;
+function waLink(){
+  const it = open, size = parts(it.size)[0], full = it.price * qty, sum = promo ? Math.round(full * 0.9) : full;
+  const msg = `Здравствуйте! Хочу заказать: ${it.name}${size ? ", " + size : ""}${qty > 1 ? ", " + qty + " шт" : ""}. Цена ${fmt(full)}.` + (promo ? ` Промокод ${CODE} на первый заказ, со скидкой 10%: ${fmt(sum)}.` : "");
+  $("#dPrice").innerHTML = promo ? `<s style="color:var(--muted);font-weight:400">${fmt(full)}</s> ${fmt(sum)} <span class="tag" style="position:static;margin-left:6px">−10%</span>` : fmt(full);
+  $("#dPromo").hidden = promo;
+  $("#dOrder").href = `https://wa.me/${WA}?text=${encodeURIComponent(msg)}`;
+  $("#qVal").textContent = qty;
+  $("#dShip").textContent = sum >= FREE ? "Доставка по Астане бесплатно" : `До бесплатной доставки по Астане осталось ${fmt(FREE - sum)}`;
+}
+function show(id){
+  const it = items.find(x => x.id === id); if (!it) return; open = it; qty = 1;
+  const ph = photosOf(it);
+  $("#gal").innerHTML = ph.length ? ph.map(p => `<img src="${esc(p)}" alt="${esc(it.name)}">`).join("") : monoL(it);
+  $("#dots").innerHTML = ph.length > 1 ? ph.map((_,i) => `<i class="${i?"":"on"}"></i>`).join("") : "";
+  $("#gal").scrollLeft = 0;
+  $("#dName").textContent = it.name;
+  const sp = [], ps = parts(it.size);
+  if (ps.length) { const [first, ...rest] = ps; sp.push(["Размер", first]); rest.forEach(r => { const m = r.match(/^(\S+)\s+(.+)$/); sp.push(m ? [m[1], m[2]] : ["", r]); }); }
+  if (it.mat) sp.push(["Ткань", it.mat]);
+  $("#dSpecs").innerHTML = sp.map(([k,v]) => `<dt>${esc(k)}</dt><dd>${esc(v)}</dd>`).join("");
+  waLink(); $("#dlg").showModal();
+}
+$("#grid").addEventListener("click", e => { const b = e.target.closest("[data-id]"); if (b) show(b.dataset.id); });
+$("#close").addEventListener("click", () => $("#dlg").close());
+$("#dlg").addEventListener("click", e => { if (e.target === $("#dlg")) $("#dlg").close(); });
+$("#qMinus").addEventListener("click", () => { qty = Math.max(1, qty - 1); waLink(); });
+$("#qPlus").addEventListener("click", () => { qty = Math.min(20, qty + 1); waLink(); });
+$("#gal").addEventListener("scroll", () => { const g = $("#gal"), i = Math.round(g.scrollLeft / g.clientWidth); [...$("#dots").children].forEach((d,k) => d.classList.toggle("on", k === i)); }, {passive:true});
+
+// приветствие один раз
+const closeHi = () => { $("#hi").close(); try { localStorage.setItem("ub-hi", "1"); } catch(_) {} };
+const getPromo = () => { promo = true; try { localStorage.setItem("ub-promo", "1"); } catch(_) {} };
+$("#hiX").addEventListener("click", closeHi);
+$("#hiGo").addEventListener("click", () => { getPromo(); closeHi(); });
+$("#dPromo").addEventListener("click", () => { getPromo(); waLink(); });
+$("#hi").addEventListener("cancel", closeHi);
+let seen = false; try { seen = localStorage.getItem("ub-hi") === "1"; } catch(_) {}
+if (!seen) setTimeout(() => { if (!$("#dlg").open) $("#hi").showModal(); }, 1200);
+
+drawChips(); drawGrid();
+})();
+</script>
+</body>
+</html>
