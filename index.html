@@ -58,6 +58,13 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .item{border:0;background:none;padding:0;text-align:left;display:flex;flex-direction:column;gap:8px;min-width:0}
 .ph{position:relative;aspect-ratio:3/4;overflow:hidden;background:var(--blush)}
 .ph img{width:100%;height:100%;object-fit:cover}
+.ph .strip{position:absolute;inset:0;display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;-webkit-overflow-scrolling:touch;overscroll-behavior-x:contain}
+.ph .strip::-webkit-scrollbar{display:none}
+.ph .strip img{flex:0 0 100%;scroll-snap-align:start}
+.ph .pdots{position:absolute;left:0;right:0;bottom:8px;display:flex;justify-content:center;gap:5px;pointer-events:none}
+.ph .pdots i{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.55);box-shadow:0 0 2px rgba(0,0,0,.25)}
+.ph .pdots i.on{background:#fff}
+.item{cursor:pointer}
 .mono-l{position:absolute;inset:0;display:grid;place-items:center;font-family:var(--script);font-size:3rem;color:var(--rose-deep)}
 .tag{position:absolute;left:8px;top:8px;background:var(--sage);color:var(--white);font-size:.66rem;letter-spacing:.08em;padding:3px 9px;border-radius:999px;text-transform:uppercase}
 .item .nm{font-size:.82rem;letter-spacing:.04em;text-transform:uppercase;line-height:1.35;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
@@ -204,8 +211,13 @@ function drawGrid(){
   const list = items.filter(it => cur === "Всё" || groupName(it) === cur).sort((a,b) => rank(groupName(a)) - rank(groupName(b)) || a.price - b.price);
   $("#grid").innerHTML = list.length ? list.map(it => {
     const p = photosOf(it)[0], n = photosOf(it).length;
-    return `<button class="item" data-id="${it.id}"><div class="ph">${p ? `<img src="${esc(p)}" alt="${esc(it.name)}" loading="lazy">` : monoL(it)}${n > 1 ? `<span class="tag">${n} фото</span>` : ""}</div>
-      <div class="nm">${esc(it.name)}</div><div class="pr">${fmt(it.price)}</div></button>`;
+    const ph = photosOf(it);
+    const pics = n > 1
+      ? `<div class="strip">${ph.map((u,k) => `<img src="${esc(u)}" alt="${esc(it.name)}" loading="${k ? "lazy" : "eager"}" draggable="false">`).join("")}</div>
+         <span class="tag">1 / ${n}</span><div class="pdots">${ph.map((_,k) => `<i class="${k ? "" : "on"}"></i>`).join("")}</div>`
+      : p ? `<img src="${esc(p)}" alt="${esc(it.name)}" loading="lazy">` : monoL(it);
+    return `<div class="item" role="button" tabindex="0" data-id="${it.id}"><div class="ph">${pics}</div>
+      <div class="nm">${esc(it.name)}</div><div class="pr">${fmt(it.price)}</div></div>`;
   }).join("") : `<div class="empty">Скоро здесь появятся товары</div>`;
 }
 $("#chips").addEventListener("click", e => { const b = e.target.closest("[data-g]"); if (!b) return; cur = b.dataset.g; drawChips(); drawGrid(); window.scrollTo({top: $(".hello").offsetTop - 60}); });
@@ -234,6 +246,14 @@ function show(id){
   waLink(); $("#dlg").showModal();
 }
 $("#grid").addEventListener("click", e => { const b = e.target.closest("[data-id]"); if (b) show(b.dataset.id); });
+$("#grid").addEventListener("keydown", e => { if (e.key !== "Enter" && e.key !== " ") return; const b = e.target.closest("[data-id]"); if (b) { e.preventDefault(); show(b.dataset.id); } });
+// листание фото в карточке: счётчик и точки
+$("#grid").addEventListener("scroll", e => {
+  const st = e.target; if (!st.classList || !st.classList.contains("strip")) return;
+  const i = Math.round(st.scrollLeft / st.clientWidth), ph = st.parentNode;
+  const tag = ph.querySelector(".tag"); if (tag) tag.textContent = `${i + 1} / ${st.children.length}`;
+  ph.querySelectorAll(".pdots i").forEach((d,k) => d.classList.toggle("on", k === i));
+}, {capture:true, passive:true});
 $("#close").addEventListener("click", () => $("#dlg").close());
 $("#dlg").addEventListener("click", e => { if (e.target === $("#dlg")) $("#dlg").close(); });
 $("#qMinus").addEventListener("click", () => { qty = Math.max(1, qty - 1); waLink(); });
