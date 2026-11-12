@@ -141,7 +141,7 @@ dialog::backdrop{background:rgba(63,56,56,.45)}
 <section class="how" aria-label="Как заказать">
   <div><h3>Выберите</h3><p>Нажмите на товар, чтобы посмотреть все фото, размеры и цену.</p></div>
   <div><h3>Напишите нам</h3><p>Кнопка «Заказать» откроет WhatsApp с готовым сообщением, останется только отправить.</p></div>
-  <div><h3>Получите</h3><p>По Астане отправим Яндекс Доставкой, оплата доставки на вашей стороне, от 30 000 ₸ бесплатно. В другие города отправим Казпочтой.</p></div>
+  <div><h3>Получите</h3><p>По Астане отправим Яндекс Доставкой, оплата доставки на вашей стороне, от 60 000 ₸ бесплатно. В другие города отправим Казпочтой.</p></div>
 </section>
 <footer>
   <a href="https://instagram.com/uige.barakat" target="_blank" rel="noopener">Instagram</a>
@@ -171,7 +171,7 @@ dialog::backdrop{background:rgba(63,56,56,.45)}
     <button class="hx" id="hiX" aria-label="Закрыть">×</button>
     <div class="letter">
       <h2>Скидка 10% на первый заказ</h2>
-      <p>Нажмите кнопку, и скидка сама добавится к вашему заказу в WhatsApp. А от 30 000 ₸ ещё и доставка по Астане бесплатно.</p>
+      <p>Нажмите кнопку, и скидка сама добавится к вашему заказу в WhatsApp. А от 60 000 ₸ ещё и доставка по Астане бесплатно.</p>
     </div>
     <div class="pocket">
       <button class="go" id="hiGo" autofocus>Получить скидку</button>
@@ -186,7 +186,7 @@ dialog::backdrop{background:rgba(63,56,56,.45)}
 (() => {
 const items = JSON.parse(document.getElementById("data").textContent);
 const MAP = JSON.parse(document.getElementById("photomap").textContent);
-const WA = "77784195546", FREE = 30000, CODE = "UIGE10";
+const WA = "77784195546", FREE = 60000, CODE = "UIGE10";
 let promo = false; try { promo = localStorage.getItem("ub-promo") === "1"; } catch(_) {}
 const $ = s => document.querySelector(s);
 const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
@@ -199,7 +199,7 @@ const parts = s => (s || "").split("·").map(x => x.trim()).filter(Boolean);
 const ORDER = ["Постельное бельё","Покрывала","Подушки","Дивандек","Полотенца","Домашняя одежда"];
 const rank = g => { const i = ORDER.indexOf(g); return i < 0 ? 99 : i; };
 
-const line = ["−10% на первый заказ", "Бесплатная доставка по Астане от 30 000 ₸", "Оплата Kaspi", "Отправка по всему Казахстану", "Заказ в WhatsApp за минуту"];
+const line = ["−10% на первый заказ", "Бесплатная доставка по Астане от 60 000 ₸", "Оплата Kaspi", "Отправка по всему Казахстану", "Заказ в WhatsApp за минуту"];
 let ti = 0; const tick = () => { const el = $("#track"); el.style.opacity = 0; setTimeout(() => { el.textContent = line[ti++ % line.length]; el.style.opacity = 1; }, 400); };
 $("#track").textContent = line[ti++];
 setInterval(tick, 3500);
