@@ -191,7 +191,7 @@ let promo = false; try { promo = localStorage.getItem("ub-promo") === "1"; } cat
 const $ = s => document.querySelector(s);
 const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 const fmt = n => new Intl.NumberFormat("ru-RU").format(n) + " ₸";
-const src = id => MAP[id] ? "photos/" + MAP[id] + ".jpg" : null;
+const src = id => MAP[id] ? "photos/" + MAP[id] + ".jpg?v=2" : null;
 const photosOf = it => it.photos.map(src).filter(Boolean);
 const monoL = it => `<div class="mono-l">${esc((it.name || "U").trim().charAt(0).toUpperCase())}</div>`;
 const groupName = it => it.sec === "wear" ? "Домашняя одежда" : ({"Комплект постельного белья":"Постельное бельё"}[it.cat] || (it.cat ? it.cat.replace(/о$/, "а").replace(/ка$/, "ки") : "Другое"));
